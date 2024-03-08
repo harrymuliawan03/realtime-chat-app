@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -25,7 +28,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,15 +49,6 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDxF4fqEPS9W2ClKwyJ-C2DNlqNWGeP3Vo',
-    appId: '1:115482492201:web:3ed31a2278f04b0d6dcb38',
-    messagingSenderId: '115482492201',
-    projectId: 'flutter-chat-app-f77a1',
-    authDomain: 'flutter-chat-app-f77a1.firebaseapp.com',
-    storageBucket: 'flutter-chat-app-f77a1.appspot.com',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDx03sX5LIvBGUO4FHg5F4-ydvbTBshhhg',
     appId: '1:115482492201:android:2699357a6997df936dcb38',
@@ -67,14 +64,5 @@ class DefaultFirebaseOptions {
     projectId: 'flutter-chat-app-f77a1',
     storageBucket: 'flutter-chat-app-f77a1.appspot.com',
     iosBundleId: 'com.example.chatApp',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAyCOdquOF_1ft_w96djYhJQK8XQ9PnANs',
-    appId: '1:115482492201:ios:67976cbd1146db556dcb38',
-    messagingSenderId: '115482492201',
-    projectId: 'flutter-chat-app-f77a1',
-    storageBucket: 'flutter-chat-app-f77a1.appspot.com',
-    iosBundleId: 'com.example.chatApp.RunnerTests',
   );
 }
